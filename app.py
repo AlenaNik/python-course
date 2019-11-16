@@ -1,3 +1,3 @@
-birth_year = input('Birth year: ')
-age = 2019 - int(birth_year);
-print(age)
+say_my_name = 'Weird'
+another = say_my_name[:]
+print(another)
