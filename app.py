@@ -1,6 +1,8 @@
+import os
+import sys
 import tkinter as tk
 from tkinter import filedialog, Text
-import os
+import os, sys, subprocess
 import PyPDF2
 
 root = tk.Tk()
@@ -18,7 +20,11 @@ def addApp():
 
 def readApps():
     for app in apps:
-        os.startFile(app)
+        if sys.platform == "win32":
+            os.startfile(app)
+        else:
+            opener = "open" if sys.platform == "darwin" else "xdg-open"
+            subprocess.call(app)
 
 canvas = tk.Canvas(root, height=400, width=400, bg="#0c1013")
 canvas.pack()
@@ -28,8 +34,8 @@ frame.place(relwidth=0.8, relheight=0.8, relx=0.1, rely=0.1)
 openFile = tk.Button(root, text="Open File",
                      padx=10,
                      pady=5,
-                     fg="red",
-                     bg="red", command=addApp)
+                     fg="black",
+                     bg="#0c1013", command=addApp)
 openFile.pack()
 readApps = tk.Button(root, text="Run",
                      padx=10,
