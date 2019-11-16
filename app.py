@@ -1,8 +1,8 @@
-name = input('Put you name in here: ')
-print(len(name))
-if len(name) < 3:
-    print("Name must be a least 3 charactrs")
-elif len(name) > 50:
-    print("Too long")
+weight = int(input('How much is your weight? '))
+unit = input('(L)bs or (K)bg: ')
+if unit.upper() == "L":
+    converted = weight * 0.45
+    print(f"You are {converted} kilos")
 else:
-    print("Looks good to me")
+    converted = weight / 0.45
+    print(f"You are {converted} pounds")
